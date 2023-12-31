@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Superheroapi" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Superheroapi" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Add any other theme attributes you need -->
+    </style>
+
 </resources>
