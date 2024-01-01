@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jve386.superheroapi.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +18,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : ComponentActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
+
+    private lateinit var adapter : SuperheroAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,15 +41,26 @@ class MainActivity : ComponentActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean = false
         })
+
+        adapter = SuperheroAdapter()
+        binding.rvSuperhero.setHasFixedSize(true)
+        binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
+        binding.rvSuperhero.adapter = adapter
     }
 
     private fun searchByName(query: String) {
+        binding.progerssBar.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
-            val myResponse : Response<SuperHeroDataResponse> = retrofit.create(ApiService::class.java).getSuperheroes(query)
-            if(myResponse.isSuccessful){
+            val myResponse: Response<SuperHeroDataResponse> =
+                retrofit.create(ApiService::class.java).getSuperheroes(query)
+            if (myResponse.isSuccessful) {
                 val data = myResponse.body()
-                if(data != null){
+                if (data != null) {
                     Log.i("jveApp", "It works")
+                    runOnUiThread {
+                        adapter.updateList(data.superheroes)
+                        binding.progerssBar.isVisible = false
+                    }
                 } else {
                     Log.i("jveApp", "data is null")
                 }
