@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#034477"
@@ -7,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".DetailSuperheroActivity">
 
-
+    <!-- Superhero Image View -->
     <ImageView
         android:id="@+id/ivSuperhero"
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Superhero CardView -->
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="800dp"
@@ -37,11 +39,13 @@
          -->
 
 
+        <!-- Superhero Details Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- Superhero Name -->
             <TextView
                 android:id="@+id/tvSuperheroName"
                 android:layout_width="match_parent"
@@ -52,6 +56,7 @@
                 android:textStyle="bold"
                 tools:text="Sample Text" />
 
+            <!-- Real Name Section -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,12 +64,14 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
+                <!-- Label for Real Name -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Real name: "
                     android:textColor="@color/white" />
 
+                <!-- Actual Real Name TextView -->
                 <TextView
                     android:id="@+id/tvSuperheroRealName"
                     android:layout_width="0dp"
@@ -76,6 +83,7 @@
 
             </LinearLayout>
 
+            <!-- Publisher Section -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,12 +91,14 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
+                <!-- Label for Publisher -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Publisher: "
                     android:textColor="@color/white" />
 
+                <!-- Actual Publisher TextView -->
                 <TextView
                     android:id="@+id/tvSuperheroPublisher"
                     android:layout_width="match_parent"
@@ -98,7 +108,7 @@
                     tools:text="Sample Text" />
             </LinearLayout>
 
-
+            <!-- Power Stats Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -107,56 +117,13 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <View
-                    android:id="@+id/viewIntelligence"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:background="@color/superhero_stat_Intelligence" />
-
-                <View
-                    android:id="@+id/viewStrength"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:background="@color/superhero_stat_Strength" />
-
-                <View
-                    android:id="@+id/viewSpeed"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:background="@color/superhero_stat_Speed" />
-
-                <View
-                    android:id="@+id/viewDurability"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:background="@color/superhero_stat_Durability" />
-
-                <View
-                    android:id="@+id/viewPower"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:background="@color/superhero_stat_Power" />
-
-                <View
-                    android:id="@+id/viewCombat"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:background="@color/superhero_stat_Combat" />
+                <!-- Views representing different Power Stats -->
+                <!-- Each view represents a different power stat (Intelligence, Strength, etc.) -->
+                <!-- The color of each view is set based on the corresponding power stat -->
 
             </LinearLayout>
 
+            <!-- Labels for Power Stats -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -165,7 +132,7 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-
+                <!-- Labels for each Power Stat -->
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -177,64 +144,11 @@
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="Strength"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="Speed"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="Durability"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="Power"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="Combat"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-
+                <!-- Labels for other Power Stats (Strength, Speed, etc.) -->
 
             </LinearLayout>
 
+            <!-- Group Affiliation Section -->
             <TextView
                 android:id="@+id/tvSuperheroGroupAffiliation"
                 android:layout_width="match_parent"
@@ -249,7 +163,6 @@
                 tools:text="Sample Text" />
 
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 

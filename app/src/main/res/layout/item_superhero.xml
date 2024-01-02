@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- CardView for displaying individual Superhero items in the RecyclerView -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,22 +11,26 @@
     app:cardElevation="8dp"
     tools:cardBackgroundColor="@color/purple_700">
 
+    <!-- FrameLayout to hold the Superhero image and name -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- ImageView for Superhero image -->
         <ImageView
             android:id="@+id/ivSuperhero"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
 
+        <!-- FrameLayout for Superhero name at the bottom -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="bottom"
             android:background="#021167">
 
+            <!-- TextView for Superhero name -->
             <TextView
                 android:id="@+id/tvSuperheroName"
                 android:layout_width="wrap_content"
@@ -36,7 +41,6 @@
                 android:textColor="@color/white"/>
 
         </FrameLayout>
-
 
     </FrameLayout>
 </androidx.cardview.widget.CardView>

@@ -20,7 +20,8 @@ class MainActivity : ComponentActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
 
-    private lateinit var adapter : SuperheroAdapter
+    private lateinit var adapter: SuperheroAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,8 +35,10 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun initUI() {
+        // Set up the SearchView's query listener
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                // Trigger a search when the user submits the query
                 searchByName(query.orEmpty())
                 return false
             }
@@ -43,26 +46,32 @@ class MainActivity : ComponentActivity() {
             override fun onQueryTextChange(newText: String?): Boolean = false
         })
 
-        adapter = SuperheroAdapter{navigateToDetail(it)}  // Another way to do it: { superheroId -> navigateToDetail(superheroId)}
+        // Initialize the RecyclerView and its adapter
+        adapter = SuperheroAdapter { navigateToDetail(it) }
         binding.rvSuperhero.setHasFixedSize(true)
         binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
         binding.rvSuperhero.adapter = adapter
     }
 
     private fun searchByName(query: String) {
+        // Show progress bar while fetching data
         binding.progerssBar.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
+            // Make a network request to get superheroes by name
             val myResponse: Response<SuperHeroDataResponse> =
                 retrofit.create(ApiService::class.java).getSuperheroes(query)
+
             if (myResponse.isSuccessful) {
                 val data = myResponse.body()
                 if (data != null) {
+                    // Log success and update the UI on the main thread
                     Log.i("jveApp", "It works")
                     runOnUiThread {
                         adapter.updateList(data.superheroes)
                         binding.progerssBar.isVisible = false
                     }
                 } else {
+                    // Log if the data is null
                     Log.i("jveApp", "data is null")
                 }
             }
@@ -70,18 +79,17 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun getRetrofit(): Retrofit {
-        return Retrofit
-            .Builder()
+        // Function to create a Retrofit instance
+        return Retrofit.Builder()
             .baseUrl("https://superheroapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
-    private fun navigateToDetail(id:String){
+    private fun navigateToDetail(id: String) {
+        // Function to navigate to the DetailSuperheroActivity with the selected superhero ID
         val intent = Intent(this, DetailSuperheroActivity::class.java)
         intent.putExtra(EXTRA_ID, id)
         startActivity(intent)
     }
 }
-
-
