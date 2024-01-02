@@ -1,15 +1,16 @@
 package com.jve386.superheroapi
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jve386.superheroapi.DetailSuperheroActivity.Companion.EXTRA_ID
 import com.jve386.superheroapi.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -42,7 +43,7 @@ class MainActivity : ComponentActivity() {
             override fun onQueryTextChange(newText: String?): Boolean = false
         })
 
-        adapter = SuperheroAdapter()
+        adapter = SuperheroAdapter{navigateToDetail(it)}  // Another way to do it: { superheroId -> navigateToDetail(superheroId)}
         binding.rvSuperhero.setHasFixedSize(true)
         binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
         binding.rvSuperhero.adapter = adapter
@@ -75,4 +76,12 @@ class MainActivity : ComponentActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    private fun navigateToDetail(id:String){
+        val intent = Intent(this, DetailSuperheroActivity::class.java)
+        intent.putExtra(EXTRA_ID, id)
+        startActivity(intent)
+    }
 }
+
+

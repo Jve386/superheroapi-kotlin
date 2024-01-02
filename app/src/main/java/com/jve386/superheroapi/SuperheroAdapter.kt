@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import okhttp3.internal.notify
 
 class SuperheroAdapter(
-    var superheroList: List<SuperheroItemResponse> = emptyList()
+    var superheroList: List<SuperheroItemResponse> = emptyList(),
+    private val onItemSelected: (String) -> Unit
 ) :
     RecyclerView.Adapter<SuperheroViewHolder>() {
 
@@ -24,7 +25,7 @@ class SuperheroAdapter(
     override fun getItemCount(): Int = superheroList.size
 
     override fun onBindViewHolder(vholder: SuperheroViewHolder, position: Int) {
-        vholder.bind(superheroList[position])
+        vholder.bind(superheroList[position], onItemSelected)
     }
 
 }
