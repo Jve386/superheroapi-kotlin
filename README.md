@@ -8,7 +8,7 @@
 - RecyclerView: Display of superhero information
 - View Binding: Interaction with UI components
 - Kotlin Coroutines: Handling of asynchronous programming tasks
-- Libraries: Retrofit for API requests, Picasso for image loading and caching
+- Libraries: <a href="https://superheroapi.com/" rel="noopener noreferrer" target="_blank">Retrofit</a> for API requests, <a href="https://square.github.io/picasso" rel="noopener noreferrer" target="_blank">Picasso</a> for image loading and caching 
 - Version Control: Git
 - Build Tool: Gradle
   
