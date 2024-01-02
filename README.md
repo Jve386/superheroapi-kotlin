@@ -95,7 +95,7 @@
 
 - Clone the repository.
 - Open the project in Android Studio.
-- Make your own API at <a href="https://superheroapi.com/" rel="noopener noreferrer" target="_blank">SuperheroAPI</a>.
+- Generate your own Token at <a href="https://superheroapi.com/" rel="noopener noreferrer" target="_blank">SuperheroAPI</a>.
 - Add your personal Token to 'ApiService'.
 - Build and run on an Android device or emulator.
 
