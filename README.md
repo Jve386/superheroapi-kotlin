@@ -1,9 +1,6 @@
 # Superhero API 🦸 Android App
 
-## Project Overview 
-
-
-### Technologies Used 💻
+## Technologies Used 💻
 
 - Language: Kotlin
 - Android Frameworks: Android SDK, Android Jetpack
@@ -16,7 +13,7 @@
 - Build Tool: Gradle
   
 
-### Features ⚙️
+## Features ⚙️
 
 - Utilizes the Superhero API to fetch detailed information about superheroes.
 - Search functionality using SearchView and organized results with RecyclerView.
@@ -43,9 +40,7 @@
   - Provides methods to bind superhero data to the UI.
 
 
-
 ### Models:
-
 #### SuperHeroDataResponse
 - **Purpose:** Represents the response from the Superhero API, including superhero details.
 - **Responsibilities:**
@@ -60,7 +55,6 @@
 
 
 ### View:
-
 #### MainActivity
 - **Purpose:** Displays a SearchView, RecyclerView, and handles user interactions for superhero search.
 - **Responsibilities:**
@@ -77,7 +71,6 @@
 
 
 ### Networking:
-
 #### ApiService
 - **Purpose:** Defines the API endpoints for fetching superhero data.
 - **Responsibilities:**
@@ -86,7 +79,6 @@
 
 
 ## Key Features 🚀
-
 - Explore and access a comprehensive database of superheroes through the <a href="https://superheroapi.com/" rel="noopener noreferrer" target="_blank">SuperheroAPI</a>.
 - Visual feedback with a Progress Bar during superhero information retrieval.
 - Utilizes some Android features for a basic user-friendly experience.
@@ -98,16 +90,18 @@
 <img src="image/SuperheroScreen.jpg" alt="SuperheroScreen" width="200" height="426"/>
 </p>
 
+
+## How to Use ✨
+
+- Clone the repository.
+- Open the project in Android Studio.
+- Make your own API at <a href="https://superheroapi.com/" rel="noopener noreferrer" target="_blank">SuperheroAPI</a>.
+- Add your personal Token to 'ApiService'.
+- Build and run on an Android device or emulator.
+
+
 ## Additional Notes 📝
 
 Feel free to contribute, open issues, or use this project as a learning resource for Android development and API integration. The project leverages modern Android development practices and provides insights into using View Binding, Coroutines, Retrofit, and Picasso. 
 
 Happy coding 👌! 
-
-## How to Use ✨
-
-1. Clone the repository.
-2. Open the project in Android Studio.
-3. Make your own API at <a href="https://superheroapi.com/" rel="noopener noreferrer" target="_blank">SuperheroAPI</a>.
-4. Add your personal Token to 'ApiService'.
-5. Build and run on an Android device or emulator.
