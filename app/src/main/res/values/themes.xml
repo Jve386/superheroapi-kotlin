@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Theme.Superheroapi" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Add any other theme attributes you need -->
+        <item name="colorPrimary">#034477</item>
     </style>
 
 </resources>

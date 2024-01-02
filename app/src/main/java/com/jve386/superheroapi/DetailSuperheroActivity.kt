@@ -41,7 +41,10 @@ class DetailSuperheroActivity : AppCompatActivity() {
         binding.tvSuperheroPublisher.text = superhero.biography.publisher
 
         // Replace commas with line breaks in the connections string
-        val formattedConnections = superhero.connections.groupaffiliation.replace(", ", "\n")
+        val formattedConnections = superhero.connections.groupaffiliation
+            .replace(", ", "\n")
+            .replace("; ", "\n")
+
         binding.tvSuperheroGroupAffiliation.text = formattedConnections
     }
 
