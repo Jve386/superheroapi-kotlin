@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Superheroapi</string>
     <string name="title_activity_detail_superhero">DetailSuperheroActivity</string>
-    <string name="DetailSuperhero">Ficha del héroe</string>
+    <string name="DetailSuperhero">Hero details</string>
 </resources>

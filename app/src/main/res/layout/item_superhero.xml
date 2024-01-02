@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="bottom"
-            android:background="#8DFF00E5">
+            android:background="#021167">
 
             <TextView
                 android:id="@+id/tvSuperheroName"

@@ -37,6 +37,12 @@ class DetailSuperheroActivity : AppCompatActivity() {
         Picasso.get().load(superhero.image.url).into(binding.ivSuperhero)
         binding.tvSuperheroName.text = superhero.name
         prepareStats(superhero.powerstats)
+        binding.tvSuperheroRealName.text = superhero.biography.fullname
+        binding.tvSuperheroPublisher.text = superhero.biography.publisher
+
+        // Replace commas with line breaks in the connections string
+        val formattedConnections = superhero.connections.groupaffiliation.replace(", ", "\n")
+        binding.tvSuperheroGroupAffiliation.text = formattedConnections
     }
 
     private fun prepareStats(powerstats: PowerStatsResponse) {
