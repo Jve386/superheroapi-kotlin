@@ -1,17 +1,17 @@
-package com.jve386.superheroapi
+package com.jve386.superheroapi.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import androidx.core.view.isVisible
+import com.jve386.superheroapi.data.PowerStatsResponse
+import com.jve386.superheroapi.data.SuperHeroDetailResponse
+import com.jve386.superheroapi.network.ApiService
 import com.jve386.superheroapi.databinding.ActivityDetailSuperheroBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.math.roundToInt

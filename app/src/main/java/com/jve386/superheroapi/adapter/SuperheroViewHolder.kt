@@ -1,7 +1,8 @@
-package com.jve386.superheroapi
+package com.jve386.superheroapi.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.jve386.superheroapi.data.SuperheroItemResponse
 import com.jve386.superheroapi.databinding.ItemSuperheroBinding
 import com.squareup.picasso.Picasso
 

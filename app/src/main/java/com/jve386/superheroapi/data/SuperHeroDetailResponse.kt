@@ -1,4 +1,4 @@
-package com.jve386.superheroapi
+package com.jve386.superheroapi.data
 
 import com.google.gson.annotations.SerializedName
 

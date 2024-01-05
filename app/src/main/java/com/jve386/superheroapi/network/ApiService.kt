@@ -1,5 +1,7 @@
-package com.jve386.superheroapi
+package com.jve386.superheroapi.network
 
+import com.jve386.superheroapi.data.SuperHeroDataResponse
+import com.jve386.superheroapi.data.SuperHeroDetailResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

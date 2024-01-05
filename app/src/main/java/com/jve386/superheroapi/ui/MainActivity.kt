@@ -1,4 +1,4 @@
-package com.jve386.superheroapi
+package com.jve386.superheroapi.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,10 @@ import androidx.activity.ComponentActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jve386.superheroapi.DetailSuperheroActivity.Companion.EXTRA_ID
+import com.jve386.superheroapi.ui.DetailSuperheroActivity.Companion.EXTRA_ID
+import com.jve386.superheroapi.data.SuperHeroDataResponse
+import com.jve386.superheroapi.adapter.SuperheroAdapter
+import com.jve386.superheroapi.network.ApiService
 import com.jve386.superheroapi.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

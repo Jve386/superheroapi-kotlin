@@ -15,12 +15,12 @@
         android:theme="@style/Theme.Superheroapi"
         tools:targetApi="31">
         <activity
-            android:name=".DetailSuperheroActivity"
+            android:name=".ui.DetailSuperheroActivity"
             android:exported="false"
             android:label="@string/DetailSuperhero"
             android:theme="@style/Theme.Superheroapi" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Superheroapi">

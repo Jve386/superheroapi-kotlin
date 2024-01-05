@@ -1,8 +1,10 @@
-package com.jve386.superheroapi
+package com.jve386.superheroapi.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.jve386.superheroapi.R
+import com.jve386.superheroapi.data.SuperheroItemResponse
 
 class SuperheroAdapter(
     var superheroList: List<SuperheroItemResponse> = emptyList(),
