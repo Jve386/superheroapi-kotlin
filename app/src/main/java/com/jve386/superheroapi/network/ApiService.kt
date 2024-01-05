@@ -6,12 +6,13 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
+
 // Define an interface for making API requests using Retrofit
 interface ApiService {
 
     // Paste your API Token in here:
     companion object {
-        const val API_TOKEN = "AddYourTokenHere"
+        const val API_TOKEN = "PASTE TOKEN HERE"
     }
 
     // Endpoint to search for superheroes based on their name
