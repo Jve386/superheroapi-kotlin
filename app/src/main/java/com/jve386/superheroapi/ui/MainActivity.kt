@@ -6,33 +6,40 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jve386.superheroapi.adapter.SuperheroAdapter
 import com.jve386.superheroapi.contract.SuperheroContract
 import com.jve386.superheroapi.data.SuperHeroDataResponse
 import com.jve386.superheroapi.data.SuperHeroDetailResponse
 import com.jve386.superheroapi.data.SuperheroItemResponse
-import com.jve386.superheroapi.presenter.SuperheroPresenter
-import com.jve386.superheroapi.model.SuperheroRepository
+import com.jve386.superheroapi.databinding.ActivityMainBinding
 import com.jve386.superheroapi.network.ApiService
 import com.jve386.superheroapi.ui.DetailSuperheroActivity.Companion.EXTRA_ID
-import kotlinx.coroutines.CoroutineScope
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import androidx.lifecycle.lifecycleScope
-import com.jve386.superheroapi.databinding.ActivityMainBinding
-import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity(), SuperheroContract.View {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
-
     private lateinit var adapter: SuperheroAdapter
-    private lateinit var presenter: SuperheroContract.Presenter
+
+    @Inject
+    lateinit var presenter: SuperheroContract.Presenter
+
+    @Inject
+    lateinit var apiService: ApiService
+
+    @Inject
+    lateinit var apiToken: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +51,6 @@ class MainActivity : ComponentActivity(), SuperheroContract.View {
         setContentView(binding.root)
         retrofit = getRetrofit()
         initUI()
-        initPresenter()
     }
 
     private fun initUI() {
@@ -61,22 +67,11 @@ class MainActivity : ComponentActivity(), SuperheroContract.View {
             override fun onQueryTextChange(newText: String?): Boolean = false
         })
 
-
         // Initialize the RecyclerView and its adapter
         adapter = SuperheroAdapter { navigateToDetail(it) }
         binding.rvSuperhero.setHasFixedSize(true)
         binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
         binding.rvSuperhero.adapter = adapter
-    }
-
-
-
-
-    private fun initPresenter() {
-        val apiService = retrofit.create(ApiService::class.java)
-        val repository = SuperheroRepository(apiService)
-        presenter = SuperheroPresenter(repository)
-        presenter.attachView(this)
     }
 
     private suspend fun searchByName(query: String) {
@@ -86,8 +81,7 @@ class MainActivity : ComponentActivity(), SuperheroContract.View {
         }
 
         // Make a network request to get superheroes by name
-        val myResponse: Response<SuperHeroDataResponse> =
-            retrofit.create(ApiService::class.java).getSuperheroes(query)
+        val myResponse: Response<SuperHeroDataResponse> = apiService.getSuperheroes(apiToken, query)
 
         if (myResponse.isSuccessful) {
             val data = myResponse.body()
@@ -104,7 +98,6 @@ class MainActivity : ComponentActivity(), SuperheroContract.View {
             }
         }
     }
-
 
     private fun getRetrofit(): Retrofit {
         // Function to create a Retrofit instance

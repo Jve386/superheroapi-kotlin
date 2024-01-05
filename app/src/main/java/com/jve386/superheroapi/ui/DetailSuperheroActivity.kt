@@ -9,12 +9,16 @@ import com.jve386.superheroapi.data.SuperHeroDetailResponse
 import com.jve386.superheroapi.network.ApiService
 import com.jve386.superheroapi.databinding.ActivityDetailSuperheroBinding
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 import kotlin.math.roundToInt
+
+@AndroidEntryPoint
 
 class DetailSuperheroActivity : AppCompatActivity() {
 
@@ -23,6 +27,12 @@ class DetailSuperheroActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityDetailSuperheroBinding
+
+    @Inject
+    lateinit var apiService: ApiService
+
+    @Inject
+    lateinit var apiToken: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,11 +97,11 @@ class DetailSuperheroActivity : AppCompatActivity() {
         ).roundToInt()
     }
 
-    // Function to get superhero information using Retrofit
+    // Function to get superhero information using Dagger-injected ApiService
     private fun getSuperheroInformation(id: String) {
         CoroutineScope(Dispatchers.IO).launch {
             // Make a network request to get superhero details
-            val superheroDetail = getRetrofit().create(ApiService::class.java).getSuperheroeDetail(id)
+            val superheroDetail = apiService.getSuperheroDetail(apiToken, id)
 
             // Check if the response body is not null
             if (superheroDetail.body() != null) {

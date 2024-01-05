@@ -13,9 +13,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.resume
+import javax.inject.Inject
 
-open class SuperheroRepository(private val apiService: ApiService) {
-
+class SuperheroRepository @Inject constructor(
+    private val apiService: ApiService,
+    private val apiToken: String
+) {
 
     interface Callback<T> {
         fun onSuccess(response: T)
@@ -24,7 +27,7 @@ open class SuperheroRepository(private val apiService: ApiService) {
 
     suspend fun searchSuperheroes(name: String, callback: Callback<SuperHeroDataResponse>) {
         try {
-            val response = apiService.getSuperheroes(name)
+            val response = apiService.getSuperheroes(apiToken, name)
             if (response.isSuccessful) {
                 callback.onSuccess(response.body()!!)
             } else {
@@ -35,10 +38,9 @@ open class SuperheroRepository(private val apiService: ApiService) {
         }
     }
 
-
     suspend fun getSuperheroDetail(id: String, callback: Callback<SuperHeroDetailResponse>) {
         try {
-            val response = apiService.getSuperheroeDetail(id)
+            val response = apiService.getSuperheroDetail(apiToken, id)
             if (response.isSuccessful) {
                 callback.onSuccess(response.body()!!)
             } else {

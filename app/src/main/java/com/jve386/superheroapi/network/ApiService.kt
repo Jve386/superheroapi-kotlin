@@ -3,24 +3,34 @@ package com.jve386.superheroapi.network
 import com.jve386.superheroapi.data.SuperHeroDataResponse
 import com.jve386.superheroapi.data.SuperHeroDetailResponse
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-
-// Define an interface for making API requests using Retrofit
 interface ApiService {
 
-    // Paste your API Token in here:
+    @GET("api/{token}/search/{name}")
+    suspend fun getSuperheroes(
+        @Path("token") apiToken: String,
+        @Path("name") superheroName: String
+    ): Response<SuperHeroDataResponse>
+
+    @GET("api/{token}/{id}")
+    suspend fun getSuperheroDetail(
+        @Path("token") apiToken: String,
+        @Path("id") superheroId: String
+    ): Response<SuperHeroDetailResponse>
+
     companion object {
-        const val API_TOKEN = "PASTE TOKEN HERE"
+        fun create(apiToken: String): ApiService {
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://superheroapi.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            return retrofit.create(ApiService::class.java)
+        }
     }
-
-    // Endpoint to search for superheroes based on their name
-    @GET("api/$API_TOKEN/search/{name}")
-    suspend fun getSuperheroes(@Path("name") superheroName: String): Response<SuperHeroDataResponse>
-
-    // Endpoint to get detailed information about a specific superhero based on their ID
-    @GET("api/$API_TOKEN/{id}")
-    suspend fun getSuperheroeDetail(@Path("id") superheroId: String): Response<SuperHeroDetailResponse>
-
 }
+
