@@ -26,7 +26,7 @@
 
 ## Key Components 🛠️
 
-### 🔨 Adapters/Controllers:
+### 🔨 Adapters:
 
 #### SuperheroAdapter
 - **Purpose:** Manages the display of superhero search results in a RecyclerView.
